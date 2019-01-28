@@ -29,6 +29,7 @@ MEASUREMENTS_FOR_POINT = 'measurements/point/'
 META_INDEXES = 'meta/indexes/'
 META_MEASUREMENTS = 'meta/measurements/'
 
+
 class Colors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -63,8 +64,8 @@ class PyAirly:
         if self.__debug:
             print(Colors.OKGREEN)
             print('------------REQUEST------------')
-            print(f'URL: {url}')
-            print(f'HEADER: {headers}')
+            print('URL: ' + url)
+            print('HEADER: ' + str(headers))
             print(Colors.OKBLUE)
             print('------------RESPONSE-----------')
             print(json.dumps(result.json(), indent=4, sort_keys=True))
@@ -72,14 +73,11 @@ class PyAirly:
         return result
 
     # INSTALLATIONS
-    def get_installations(self):
-        return self.send_request(INSTALLATIONS)
-
     def get_installations_by_id(self, installation_id):
         """https://developer.airly.eu/docs#endpoints.installations.getbyid"""
         return self.send_request(INSTALLATIONS + str(installation_id))
 
-    def get_installations_nearest(self, latitude , longitude, max_distance_km="", max_results="",
+    def get_installations_nearest(self, latitude, longitude, max_distance_km="", max_results="",
                                   ):
         """https://developer.airly.eu/docs#endpoints.installations.nearest"""
         params = [('lat', latitude), ('lng', longitude), ('maxDistanceKM', max_distance_km),
@@ -109,13 +107,3 @@ class PyAirly:
     def get_meta_measurements(self):
         """https://developer.airly.eu/docs#endpoints.meta.measurements"""
         return self.send_request(META_MEASUREMENTS)
-
-if __name__ == '__main__':
-    apikey = open('apikey', 'r').readline()[:-1]
-    airly = PyAirly(apikey, debug=True, accept_gzip_encoding=True)
-    print(airly.get_measurements_by_installation(122))
-    print(airly.get_measurements_nearest(50.062006, 19.940984, 5))
-    print(airly.get_measurements_for_point(50.062006, 19.940984))
-    print(airly.get_meta_indexes())
-    print(airly.get_meta_measurements())
-
