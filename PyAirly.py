@@ -95,7 +95,7 @@ class PyAirly:
     def get_measurements_nearest(self, latitude, longitude, max_distance_km=""):
         """https://developer.airly.eu/docs#endpoints.measurements.nearest"""
         params = [('lat', latitude), ('lng', longitude), ('maxDistanceKM', max_distance_km)]
-        return self.send_request(MEASUREMENTS_NEAREST, paramsg)
+        return self.send_request(MEASUREMENTS_NEAREST, params)
 
     def get_measurements_for_point(self, latitude, longitude):
         """https://developer.airly.eu/docs#endpoints.measurements.point"""
