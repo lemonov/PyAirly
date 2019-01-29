@@ -16,16 +16,16 @@ Python binding of https://developer.airly.eu/ REST api
 **debug**: True for extra printed information on requests/responses
 
 ```python
-    from pyairly import PyAirly
+from pyairly import PyAirly
 
-    airly = PyAirly(apikey, debug=True, accept_gzip_encoding=True)
-    print(airly.get_installations_by_id(122))
-    print(airly.get_installations_nearest(50.062006, 19.940984, 1, 2))
+airly = PyAirly(apikey, debug=True, accept_gzip_encoding=True)
+print(airly.get_installations_by_id(122))
+print(airly.get_installations_nearest(50.062006, 19.940984, 1, 2))
 
-    print(airly.get_measurements_by_installation(122))
-    print(airly.get_measurements_nearest(50.062006, 19.940984, 1))
-    print(airly.get_measurements_for_point(50.062006, 19.940984))
+print(airly.get_measurements_by_installation(122))
+print(airly.get_measurements_nearest(50.062006, 19.940984, 1))
+print(airly.get_measurements_for_point(50.062006, 19.940984))
 
-    print(airly.get_meta_indexes())
-    print(airly.get_meta_measurements())
+print(airly.get_meta_indexes())
+print(airly.get_meta_measurements())
 ```
