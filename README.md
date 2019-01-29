@@ -3,6 +3,10 @@ Python binding of https://developer.airly.eu/ REST api
 
 **Python version >= 3**
 
+**Installation**
+
+    pip install pyairly
+
 ## Constructor params 
 
 **accept_gzip_encoding**: True to get gzip response
@@ -12,6 +16,8 @@ Python binding of https://developer.airly.eu/ REST api
 **debug**: True for extra printed information on requests/responses
 
 ```python
+    from pyairly import PyAirly
+
     airly = PyAirly(apikey, debug=True, accept_gzip_encoding=True)
     print(airly.get_installations_by_id(122))
     print(airly.get_installations_nearest(50.062006, 19.940984, 1, 2))
