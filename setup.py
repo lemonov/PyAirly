@@ -1,14 +1,26 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+import os
+import sys
 
-setup(name='PyAirly',
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
+
+# Publish Helper.
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist')
+    os.system('twine upload dist/*')
+    sys.exit()
+
+setup(name='pyairly',
       version='1.0',
-      description='Python binding of Airly API',
-      author='Piotr Lemańczyk',
-      author_email='piotrlemanczyk1989@gmail.com',
-      url='',
+      license='Apache 2.0',
+      url='https://github.com/lemonov/PyAirly',
       install_requires=[
           'requests',
-      ]
+      ],
+      py_modules=['pyairly'],
+      python_requires='>=3'
       )
